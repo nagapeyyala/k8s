@@ -30,13 +30,13 @@ Kubernetes (often abbreviated as **K8s**) is an open-source platform for automat
 
 ### Timeline of Major Milestones
 
-| Year          | Event                                                      |
-|---------------|------------------------------------------------------------|
-| 2013          | Project started at Google                                  |
-| June 2014     | Kubernetes announced, open-sourced by Google               |
-| July 2015     | v1.0 released; donated to CNCF                             |
-| 2016–2017     | Major tech firms adopt, and managed services launch        |
-| 2018–2024     | Kubernetes becomes the industry standard in container orchestration; community and ecosystem expand rapidly.
+| Year           | Event                                                       |
+|----------------|-------------------------------------------------------------|
+| 2013           | Project started at Google                                   |
+| June 2014      | Kubernetes announced, open-sourced by Google                |
+| July 2015      | v1.0 released; donated to CNCF                              |
+| 2016–2017      | Major tech firms adopt, and managed services launch         |
+| 2018–2024      | Kubernetes becomes the industry standard in container orchestration; community and ecosystem expand rapidly.
 
 ### Why Is Kubernetes at the Top?
 
