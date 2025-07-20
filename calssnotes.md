@@ -47,3 +47,47 @@ Kubernetes (often abbreviated as **K8s**) is an open-source platform for automat
 
 Kubernetes began as a Google project but quickly became a global phenomenon thanks to open collaboration, technical merit, and strong support from the software industry. Its flexibility and active community have made it the leading container orchestration platform in the world.
 
+**Kubernetes (K8s) basic architecture** is organized around a cluster composed of two main logical layers: the **Control Plane** and the **Worker Nodes** (also called nodes or minions).
+
+### Control Plane Components
+
+The **Control Plane** manages the overall state of the Kubernetes cluster—it makes decisions, such as scheduling, scaling, and responding to failures. Its main components are:
+
+- **kube-apiserver**: The gateway for all REST commands used to control the cluster. It exposes the Kubernetes API and handles communication internally and externally.
+- **etcd**: A distributed, highly available key-value store used as Kubernetes’ backing store for all cluster data and configuration.
+- **kube-scheduler**: Watches for newly created Pods that have no node assigned and selects the best node for placement.
+- **kube-controller-manager**: Runs controller processes that handle tasks such as node management, endpoints, replication, and more, ensuring the desired cluster state.
+- **cloud-controller-manager**: Integrates with cloud providers for service management and resource orchestration (optional—primarily used in cloud environments).
+
+### Node (Worker) Components
+
+**Worker Nodes** run the workloads. They host the containers via Pods and maintain the runtime environment. Each node contains:
+
+- **kubelet**: An agent that ensures containers are running in a Pod as specified. It communicates with the control plane to receive instructions and report node status.
+- **kube-proxy**: A network proxy managing network communication for Pods, providing network services and load balancing (sometimes replaced by other networking plugins).
+- **Container runtime**: Software responsible for running containers (e.g., containerd, Docker, CRI-O, etc.).
+
+### Key Object: Pods
+
+- **Pod**: The smallest deployable unit in Kubernetes; a Pod can contain one or more containers that are tightly coupled. Pods are scheduled onto worker nodes.
+
+### Supporting Addons
+
+- Components such as DNS, Web UI (Dashboard), monitoring, and logging are often installed as cluster "addons" to provide full operational capability.
+
+### Overview Table
+
+| Layer          | Component               | Purpose/Function                                      |
+|----------------|------------------------|-------------------------------------------------------|
+| Control Plane  | kube-apiserver         | Exposes API, cluster gateway                          |
+| Control Plane  | etcd                   | Persistent storage for cluster state                  |
+| Control Plane  | kube-scheduler         | Assigns Pods to nodes                                 |
+| Control Plane  | kube-controller-manager| Manages controllers (desired state)                   |
+| Control Plane  | cloud-controller-mgr   | Cloud integration (optional)                          |
+| Node           | kubelet                | Ensures containers in Pods are running                |
+| Node           | kube-proxy             | Handles networking, service exposure                  |
+| Node           | Container runtime      | Runs containers                                       |
+| Node           | Pod                    | Smallest deployable unit, runs containers             |
+
+**Kubernetes clusters can scale from a few nodes (for development) to thousands (in production), delivering reliability and flexibility for containerized workloads**.
+
