@@ -48,7 +48,7 @@ Kubernetes (often abbreviated as **K8s**) is an open-source platform for automat
 Kubernetes began as a Google project but quickly became a global phenomenon thanks to open collaboration, technical merit, and strong support from the software industry. Its flexibility and active community have made it the leading container orchestration platform in the world.
 
 # **Kubernetes (K8s) basic architecture** 
-is organized around a cluster composed of two main logical layers: the **Control Plane** and the **Worker Nodes** (also called nodes or minions).
+**K8s** is organized around a cluster composed of two main logical layers: the **Control Plane** and the **Worker Nodes** (also called nodes or minions).
 
 ### Control Plane Components
 
