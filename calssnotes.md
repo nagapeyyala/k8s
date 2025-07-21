@@ -50,7 +50,7 @@ Kubernetes began as a Google project but quickly became a global phenomenon than
 # **Kubernetes (K8s) basic architecture** 
 **K8s** is organized around a cluster composed of two main logical layers: the **Control Plane** and the **Worker Nodes** (also called nodes or minions).
 
-### Control Plane Components
+## Control Plane Components
 
 The **Control Plane** manages the overall state of the Kubernetes cluster—it makes decisions, such as scheduling, scaling, and responding to failures. Its main components are:
 
@@ -60,7 +60,7 @@ The **Control Plane** manages the overall state of the Kubernetes cluster—it m
 - **kube-controller-manager**: Runs controller processes that handle tasks such as node management, endpoints, replication, and more, ensuring the desired cluster state.
 - **cloud-controller-manager**: Integrates with cloud providers for service management and resource orchestration (optional—primarily used in cloud environments).
 
-### Node (Worker) Components
+## Node (Worker) Components
 
 **Worker Nodes** run the workloads. They host the containers via Pods and maintain the runtime environment. Each node contains:
 
@@ -92,9 +92,9 @@ The **Control Plane** manages the overall state of the Kubernetes cluster—it m
 
 **Kubernetes clusters can scale from a few nodes (for development) to thousands (in production), delivering reliability and flexibility for containerized workloads**.
 
-Kubernetes (K8s) started with **extensibility** as a long-term strategic goal, but its interface story evolved significantly over time as new use cases and ecosystem demands grew.
-
 ## Why Extensibility?
+
+Kubernetes (K8s) started with **extensibility** as a long-term strategic goal, but its interface story evolved significantly over time as new use cases and ecosystem demands grew.
 
 From the outset, Kubernetes aimed to be a **platform, not just a product**—a system flexible enough to run anywhere and be adapted for diverse needs. This meant users could plug in different storage, networking, or runtime solutions, and vendors could integrate their technology **without forking or patching core code**. Extensibility became critical as Kubernetes adoption spread and requirements grew beyond initial core features.
 
@@ -119,7 +119,7 @@ To address complexity and enable a pluggable ecosystem, Kubernetes introduced st
 
 ### How These Work Now
 
-- **CRI (Container Runtime Interface)**: A well-defined gRPC API. Any compliant runtime can be dropped in, decoupling Kubernetes from Docker and allowing other solutions like containerd or CRI-O. The old **dockershim** code has been deprecated and removed from core Kubernetes releases[8].
+- **CRI (Container Runtime Interface)**: A well-defined gRPC API. Any compliant runtime can be dropped in, decoupling Kubernetes from Docker and allowing other solutions like containerd or CRI-O. The old **dockershim** code has been deprecated and removed from core Kubernetes releases.
 - **CNI**: Enables many network solutions (Calico, Flannel, etc.) to work as drop-in components by following the CNI spec.
 - **CSI**: Major vendors and cloud providers now offer their own CSI drivers, letting Kubernetes clusters support a vast array of storage solutions.
 - **API Extensions & CRDs**: Custom Resource Definitions (CRDs) let users add new resource types, controllers, and admission webhooks for policy, all without modifying core code. Other areas like **device plugins** also follow this extensibility approach, allowing integration with specialized hardware.
@@ -171,7 +171,7 @@ An operations team builds a Kubernetes cluster on their datacenter VMs or a pref
 
 Ideal for most **production** workloads, especially in the cloud—**minimal operational overhead**.
 
-- **Amazon EKS, Azure AKS, Google GKE, Oracle OKE**: Cloud providers manage the control plane, upgrades, backups, and scaling—engineers focus only on application workloads[6].
+- **Amazon EKS, Azure AKS, Google GKE, Oracle OKE**: Cloud providers manage the control plane, upgrades, backups, and scaling—engineers focus only on application workloads.
 - **VMware Tanzu, Red Hat OpenShift, Platform9**: Vendor-supported enterprise platforms, often with added features (security, UI, CI/CD integration).
 
 **Real-time scenario:**  
@@ -188,10 +188,10 @@ A business launches its apps in a highly available, auto-healing cluster provide
 
 ## **Key Points to Remember**
 
-- **Choose single-node/local methods for learning and rapid prototyping.**
-- **Use kubeadm/automation tools for custom, controlled production or staging environments.**
-- **Opt for managed services for most business production apps—they save time, reduce risk, and scale automatically.**
-- **Manual setups are primarily for educational purposes, not practical production use.**
+- Choose single-node/local methods for learning and rapid prototyping.
+- Use kubeadm/automation tools for custom, controlled production or staging environments.
+- Opt for managed services for most business production apps—they save time, reduce risk, and scale automatically.
+- Manual setups are primarily for educational purposes, not practical production use.
 
 Real-world usage is driven by the need for reliability, operational simplicity, scalability, and fit with your existing infrastructure or cloud strategy.
 
@@ -199,20 +199,20 @@ Real-world usage is driven by the need for reliability, operational simplicity, 
 
 If you want hands-on Kubernetes practice without the hassle of setup, **Killercoda** is one of the best free platforms available. It offers real, ready-to-use Kubernetes clusters right in your browser—perfect for learning, experimenting, or preparing for certifications.
 
+[refer here] https://killercoda.com/playgrounds/scenario/kubernetes
+
 ### Why Choose Killercoda?
 
 - **Instant browser access** to real Kubernetes environments—no local installation needed.
 - **Modern and up-to-date clusters** with multi-node support, giving you the experience of working with production-like setups.
 - **Scenario-based labs** for both beginners and advanced users, with step-by-step guides and interactive terminals.
-- **Compatible with Katacoda scenarios,** letting you reuse content and smoothly transition if you’ve used Katacoda before.
-- **Active development** ensures new features and up-to-date technology, making your learning experience current and relevant.
+
 
 ### Who Should Use Killercoda?
 
 - Beginners looking for a zero-hassle way to try Kubernetes.
 - Developers testing Kubernetes commands and manifest files.
 - Students and professionals preparing for Kubernetes certifications.
-- Trainers and educators creating interactive, repeatable lab experiences.
 
 **Killercoda makes Kubernetes learning accessible, practical, and modern—no setup, just open your browser and start experimenting on real clusters!**
 
@@ -248,7 +248,7 @@ You might run a single container in a Pod (the common case), or use a Pod to hos
 **Bottom line:**  
 Kubernetes handles all workloads by abstracting them as Pods. Pods allow you to run, scale, and manage your applications efficiently and reliably across clusters—making them essential for cloud-native, container-driven architectures.
 
-**Interacting with Kubernetes: API, Resources, and Versioning**
+## **Interacting with Kubernetes: API, Resources, and Versioning**
 
 Kubernetes (K8s) interaction is driven by its **RESTful API**—all cluster resources and operations are exposed through the **kube-apiserver** using standard HTTP methods (GET, POST, PUT, DELETE). This architecture allows both humans (using `kubectl`) and programs to query, create, update, or delete any Kubernetes resource.
 
@@ -281,14 +281,14 @@ Kubernetes (K8s) interaction is driven by its **RESTful API**—all cluster reso
 
 ### How to Interact
 
-- **kubectl CLI:** The most common tool, which acts as a client making REST requests to the API server[1].
+- **kubectl CLI:** The most common tool, which acts as a client making REST requests to the API server.
 - **Direct REST Calls:** Advanced users or automated systems can use HTTP requests to the API endpoints.
 - **Client Libraries:** Available in many languages to interact programmatically with the cluster.
 
 ### Important Points
 
 - The API uses consistent patterns and verbs, making it intuitive once you know the basic conventions.
-- **API discovery**: Use the Discovery API or OpenAPI docs to programmatically explore available resources and their schemas[1].
+- **API discovery**: Use the Discovery API or OpenAPI docs to programmatically explore available resources and their schemas.
 - Each object specifies its **kind** (e.g., `Pod`) and **apiVersion** (e.g., `v1`, `apps/v1`), ensuring clarity and compatibility.
 
 **In summary:**  
@@ -502,7 +502,7 @@ You may specify multiple files or even apply directly from URLs or Git repositor
 
 Below is a clear primer on **writing basic Kubernetes Pod manifests** using YAML.
 
-# minimal Pod Manifest Example
+# Minimal Pod Manifest Example
 
 This YAML manifest creates a Pod named `nginx` that runs a single container using the official `nginx` image:
 
@@ -546,6 +546,130 @@ kubectl apply -f nginx-pod.yaml
 - For **simple, standalone workloads** or exploratory testing, you can create bare pods.
 - In production, use higher-level controllers like **Deployments** for replica management, rolling updates, and self-healing.
 
-Let me know if you'd like to see **examples with advanced features (e.g., volume mounts, environment variables)** or if you want to progress towards **Deployments**.
+
+
+## **Resources in Kubernetes** refer primarily to two distinct but related concepts:
+
+### 1. **Kubernetes API Resources (Objects/Resource Types)**
+
+- **API resources** are entities managed by the Kubernetes API server. Each resource type (like Pods, Deployments, Services, Namespaces, etc.) has a schema, known as its "kind" (e.g., `kind: Pod`).
+- **Workload resources** are common resource types used to run containerized apps. These include:
+  - **Pods**: The smallest deployable unit, encapsulating one or more containers.
+  - **Deployments**: Manage stateless applications and automate updates.
+  - **StatefulSets**: Manage stateful applications, providing stable identities.
+  - **DaemonSets**: Run a copy of a Pod on every node.
+  - **Jobs/CronJobs**: Manage batch or scheduled tasks.
+- **Services** are also resources, managing network access to Pods.
+- **ResourceQuota** and similar objects set limits on usable resources to prevent exhaustion.
+- API resources are exposed via RESTful endpoints like `/api/v1/pods`, and manipulated with HTTP verbs (GET, POST, PUT, PATCH, DELETE).
+
+### 2. **Compute Resources (CPU, Memory, HugePages)**
+
+- **Compute resources** are the physical or virtual resources (CPU, memory) consumed by containers and Pod.
+- Each container in a Pod can declare:
+  - **Requests** (minimum guaranteed resource allocation)
+  - **Limits** (maximum resource usage allowed)
+- Resource types include:
+  - **CPU**: Expressed in "Kubernetes CPUs" (millicores or cores)
+  - **Memory**: Specified in bytes (Mi, Gi, etc.)
+  - **HugePages**: Linux-specific larger memory pages for specialized workloads.
+- Example snippet in a Pod manifest:
+  ```yaml
+  resources:
+    requests:
+      cpu: "500m"
+      memory: "128Mi"
+    limits:
+      cpu: "1"
+      memory: "256Mi"
+  ```
+- Requests and limits help ensure fair allocation, effective scheduling, and cluster stability.
+
+### **Key Points and Distinctions**
+
+- **API Resources (Objects/Resource Types)**: Conceptual clusters of objects you manage (Pods, Services, Deployments, etc.).
+- **Compute Resources**: Quantifiable constraints (CPU, memory, storage) applicable to containers and Pods.
+- In YAML manifests, you define both: the type of API resource (via `kind`), and compute resources (via `resources: requests/limits` for containers).
+- **Do not confuse**: A "Kubernetes resource" (like a Pod or Node as a kind of API object) is different from "compute resource" (like CPU or RAM, which the Pod uses).
+
+
+# How Resources Impact QoS
+
+Defining **resources** (CPU and memory requests/limits) in a Pod manifest is key to Kubernetes’ **Quality of Service (QoS)**, directly impacting pod prioritization, scheduling, and eviction order under resource pressure.
+
+Each Pod gets a **QoS class** based on how you specify `resources.requests` and `resources.limits` in the container specs. The three QoS classes are:
+
+| QoS Class     | Definition                                                                                      | Eviction Priority       |
+|---------------|------------------------------------------------------------------------------------------------|------------------------|
+| **Guaranteed**| All containers have CPU/memory *requests* and *limits*, and for each, *limit = request*.       | Evicted last           |
+| **Burstable** | At least one container has a request, and not all limits equal requests; or some containers have neither. | Evicted after BestEffort|
+| **BestEffort**| No containers specify requests or limits for CPU/memory.                                       | Evicted first          |
+
+**Eviction order:** In case of node resource shortages, BestEffort pods are evicted first, then Burstable, and finally Guaranteed remain protected until all lower classes are gone.
+
+## Example: Defining Resources in Pod Manifest
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: qos-demo
+spec:
+  containers:
+    - name: app
+      image: nginx
+      resources:
+        requests:
+          memory: "256Mi"
+          cpu: "250m"
+        limits:
+          memory: "512Mi"
+          cpu: "500m"
+```
+- `requests`: Minimum resources guaranteed for scheduling the pod.
+- `limits`: Maximum resources the container can use.
+
+## Summary Table: QoS Determination
+
+| Scenario                                                   | Resulting QoS Class |
+|------------------------------------------------------------|---------------------|
+| No `requests` or `limits`                                  | BestEffort          |
+| At least one `request` set, limits may differ from requests| Burstable           |
+| All containers: *limit* = *request* for both CPU/memory    | Guaranteed          |
+
+## Why Does This Matter?
+
+- **Performance:** Pods with Guaranteed QoS get stable resources and are least likely to be evicted under pressure, benefiting critical apps.
+- **Stability:** Defining accurate requests/limits prevents a single pod from overwhelming the node, ensures fair scheduling, and improves cluster reliability.
+- **Cost:** Efficient resource use avoids overprovisioning and reduces wasted capacity.
+
+**Best Practice:**  
+Always specify realistic `requests` and `limits` for your workloads—use Guaranteed for critical workloads, Burstable for less predictable apps, and avoid BestEffort for anything important.
+
+
+
+# Types of Containers in a Pod
+
+A **Pod** in Kubernetes can include several types of containers, each serving distinct operational purposes within the Pod's lifecycle.
+
+| **Type**            | **Purpose**                                                                           | **Lifecycle**                                                                   |
+|---------------------|---------------------------------------------------------------------------------------|--------------------------------------------------------------------------------|
+| **App Containers**  | The main container(s) providing the core functionality of the Pod (e.g., web server). | Run for the pod's lifetime after init containers finish.              |
+| **Init Containers** | Specialized containers that run setup or initialization tasks before the main app(s).  | Always execute sequentially and to completion before app containers start.   |
+| **Sidecar Containers** | Auxiliary containers offering supporting features like logging, monitoring, or proxies (e.g., service mesh). | Run alongside app containers for the full pod lifetime.                  |
+| **Ephemeral Containers** | Temporary containers added to running Pods for debugging and troubleshooting.            | Can be injected at runtime; not part of the initial pod spec.            |
+
+
+#### Additional Context
+
+- Every Pod must have at least one main app container.
+- **Single-container Pods**: Contain only one app container – the standard pattern for most use cases.
+- **Multi-container Pods**: Include multiple containers working together, usually employing sidecar patterns for advanced scenarios.
+- **Init containers** are used for setup and can't be restarted unless the Pod restarts. They ensure any required startup logic, like waiting for external services or preparing files, is complete before main app containers run.
+- **Ephemeral containers** are not intended for regular application features—they are a debugging tool.
+
+**In summary:**  
+A Pod can host several types of containers: main app containers (always required), init containers (for startup/setup logic), sidecar containers (for auxiliary functions), and ephemeral containers (for troubleshooting). The containers in a Pod run in a shared context, with shared storage and networking, enabling strong cooperation when needed.
+
 
 
